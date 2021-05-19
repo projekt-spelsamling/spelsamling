@@ -1,0 +1,13 @@
+#Based on:
+#https://intellij-support.jetbrains.com/hc/en-us/articles/206544839-How-to-manage-projects-under-Version-Control-Systems
+
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+/target
+usage.statistics.xml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\alexa\Documents\Plugg\Agil Systemutveckling\game-collection\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
