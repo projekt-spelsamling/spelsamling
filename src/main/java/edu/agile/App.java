@@ -1,9 +1,9 @@
 package edu.agile;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
@@ -13,17 +13,21 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
-
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
-        stage.setScene(scene);
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/main.fxml"));
+        stage.setScene(new Scene(root));
         stage.show();
     }
 
     public static void main(String[] args) {
+        //todo ta bort exempelkod
+//        GameService gameService = GameService.getInstance();
+//        Game game = new Game("Counterstrike", "Police vs terrorists");
+//        Game game2 = new Game("Doom", "Kill demons");
+//        gameService.addGame(game);
+//        gameService.addGame(game2);
+//
+//        gameService.findAll().forEach(System.out::println);
         launch();
     }
 
