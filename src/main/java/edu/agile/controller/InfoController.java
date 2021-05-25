@@ -10,11 +10,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InfoController implements Initializable {
-    private Game game;
+    private final Game game;
 
     public InfoController(Game game) {
         this.game = game;
     }
+
+    //todo button to go back to main scene
 
     @FXML
     TextField gameName;
@@ -27,14 +29,4 @@ public class InfoController implements Initializable {
         gameName.setText(game.getName());
         gameDescription.setText(game.getDescription());
     }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-
 }
