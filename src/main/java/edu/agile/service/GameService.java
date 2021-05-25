@@ -6,6 +6,7 @@ import org.bson.Document;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class GameService {
     private static GameService instance;
@@ -29,7 +30,7 @@ public class GameService {
      * @param game game to add
      */
     public void addGame(Game game) {
-        gameRepository.addGame(game);
+        gameRepository.addGame(toDocument(game));
     }
 
     /**
@@ -37,14 +38,30 @@ public class GameService {
      *
      * @return list of documents
      */
-    public List<Document> findAll() {
-        return gameRepository.findAll();
+    public List<Game> findAll() {
+        return gameRepository.findAll()
+                .stream()
+                .map(GameService::toEntity)
+                .collect(Collectors.toList());
     }
 
-//    private static Game toEntity(Document document) {
-//
-//        Game.getFields();
-//        Game.builder()
-//                .name(document.getString("name"))
-//    }
+    /**
+     * Converts document to game
+     *
+     * @param document
+     * @return
+     */
+    private static Game toEntity(Document document) {
+        return Game.builder()
+                .name(document.getString("name"))
+                .description(document.getString("description"))
+                .build();
+    }
+
+    private static Document toDocument(Game game) {
+        Document document = new Document();
+        document.append("name", game.getName());
+        document.append("description", game.getDescription());
+        return document;
+    }
 }

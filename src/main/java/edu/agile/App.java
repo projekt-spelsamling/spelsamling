@@ -1,5 +1,7 @@
 package edu.agile;
 
+import edu.agile.model.Game;
+import edu.agile.service.GameService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,14 +22,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        //todo ta bort exempelkod
-//        GameService gameService = GameService.getInstance();
-//        Game game = new Game("Counterstrike", "Police vs terrorists");
-//        Game game2 = new Game("Doom", "Kill demons");
-//        gameService.addGame(game);
-//        gameService.addGame(game2);
-//
-//        gameService.findAll().forEach(System.out::println);
         launch();
     }
 

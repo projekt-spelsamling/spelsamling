@@ -33,12 +33,9 @@ public class GameRepository {
     /**
      * Add a game to the database
      *
-     * @param game game to add
+     * @param document game to add
      */
-    public void addGame(Game game) {
-        Document document = new Document();
-        document.append("name", game.getName());
-        document.append("description", game.getDescription());
+    public void addGame(Document document) {
         gameCollection.insertOne(document);
     }
 
