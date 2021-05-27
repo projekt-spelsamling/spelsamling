@@ -8,7 +8,7 @@
             fx:controller="edu.agile.controller.MainController">
     <children>
         <ComboBox fx:id="gameComboBox" layoutX="43.0" layoutY="187.0" prefWidth="150.0"/>
-        <Button layoutX="43.0" layoutY="120.0" mnemonicParsing="false" text="Spela"/>
+        <Button fx:id="playGame" layoutX="43.0" layoutY="120.0" mnemonicParsing="false" text="Spela"/>
         <Button fx:id="infoGame" layoutX="139.0" layoutY="120.0" mnemonicParsing="false" onAction="#setInfoScene"
                 text="Info"/>
         <Button fx:id="addGame" layoutX="239.0" layoutY="185.0" mnemonicParsing="false" text="Lägg till"
