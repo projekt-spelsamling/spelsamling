@@ -12,10 +12,14 @@
         <Label layoutX="86.0" layoutY="80.0" text="Namn"/>
         <TextField fx:id="gameName" layoutX="175.0" layoutY="76.0" promptText="Spelets namn"/>
         <Label layoutX="86.0" layoutY="116.0" text="Beskrivning"/>
-        <TextArea fx:id="gameDescription" layoutX="175.0" layoutY="116.0" prefHeight="200.0" prefWidth="267.0"
+        <TextArea fx:id="gameDescription" layoutX="175.0" layoutY="116.0" prefHeight="130.0" prefWidth="267.0"
                   promptText="Beskrivning av spelet"/>
-        <Button fx:id="addGame" layoutX="250.0" layoutY="337.0" mnemonicParsing="false" text="Lägg till"
-                onAction="#addGame"/>
-        <Button fx:id="abort" layoutX="175.0" layoutY="337.0" mnemonicParsing="false" text="Avbryt" onAction="#abort"/>
+        <Button fx:id="addGame" layoutX="250.0" layoutY="337.0" mnemonicParsing="false" onAction="#addGame"
+                text="Lägg till"/>
+        <Button fx:id="abort" layoutX="175.0" layoutY="337.0" mnemonicParsing="false" onAction="#abort" text="Avbryt"/>
+        <Label layoutX="86.0" layoutY="277.0" text="Bild"/>
+        <TextField fx:id="imagePath" editable="false" layoutX="175.0" layoutY="273.0" promptText="Välj en fil"/>
+        <Button fx:id="imageChooseButton" layoutX="358.0" layoutY="273.0" mnemonicParsing="false"
+                onAction="#chooseImagePath" text="Bläddra"/>
     </children>
 </AnchorPane>

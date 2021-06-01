@@ -9,13 +9,8 @@ import java.io.File;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Game {
+public class GameCreationDto {
     private String name;
     private String description;
     private File file;
-
-    @Override
-    public String toString() {
-        return getName();
-    }
 }

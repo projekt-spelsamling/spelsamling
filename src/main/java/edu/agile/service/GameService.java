@@ -1,6 +1,7 @@
 package edu.agile.service;
 
 import edu.agile.model.Game;
+import edu.agile.model.GameCreationDto;
 import edu.agile.repository.GameRepository;
 import org.bson.Document;
 
@@ -12,9 +13,11 @@ public class GameService {
     private static GameService instance;
 
     private GameRepository gameRepository;
+    private ImageService imageService;
 
     private GameService() {
         this.gameRepository = GameRepository.getInstance();
+        this.imageService = ImageService.getInstance();
     }
 
     public static GameService getInstance() {
@@ -29,7 +32,8 @@ public class GameService {
      *
      * @param game game to add
      */
-    public void addGame(Game game) {
+    public void addGame(GameCreationDto game) {
+        String imageName = imageService.saveImageFile(game.getFile(), game.getName(), "banner");
         gameRepository.addGame(toDocument(game));
     }
 
@@ -58,7 +62,7 @@ public class GameService {
                 .build();
     }
 
-    private static Document toDocument(Game game) {
+    private static Document toDocument(GameCreationDto game) {
         Document document = new Document();
         document.append("name", game.getName());
         document.append("description", game.getDescription());
