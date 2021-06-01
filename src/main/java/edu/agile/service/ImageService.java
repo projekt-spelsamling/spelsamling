@@ -61,7 +61,6 @@ public class ImageService {
      * @return fileName
      */
     public String saveImageFile(File file, String gameName, String imageType) {
-        //todo hantera korrekta filtyper
         String fileType = FilenameUtils.getExtension(file.getAbsolutePath());
         String fileName = getFileName(gameName, imageType, fileType);
         Path location = file.toPath();
@@ -71,7 +70,7 @@ public class ImageService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return fileName;
+        return destination.toString();
     }
 
     /**
@@ -83,18 +82,19 @@ public class ImageService {
      * @return filename with extension, for example "minesweeper_logo.jpg"
      */
     private String getFileName(String gameName, String imageType, String fileType) {
-        return new StringBuilder().append(gameName)
-                .append("_")
-                .append(imageType)
-                .append(".")
-                .append(fileType)
-                .toString();
+        return gameName +
+                "_" +
+                imageType +
+                "." +
+                fileType;
     }
 
-    public Image getImageFile(String fileName) {
-        return new Image(Path.of(IMAGE_FOLDER, fileName).toString());
-    }
-
+    /**
+     * Get destination file path for a file name. At the moment, all image files are stored in the same folder.
+     *
+     * @param fileName name of the image file
+     * @return Path to the file
+     */
     private Path getDestination(String fileName) {
         return Path.of(HOME_DIRECTORY, COLLECTION_NAME, fileName);
     }

@@ -5,7 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,17 +19,32 @@ public class InfoController implements Initializable {
         this.game = game;
     }
 
-    //todo button to go back to main scene
 
     @FXML
-    TextField gameName;
+    TextField name;
 
     @FXML
-    TextArea gameDescription;
+    TextArea description;
+
+    @FXML
+    ImageView banner;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        gameName.setText(game.getName());
-        gameDescription.setText(game.getDescription());
+        name.setText(game.getName());
+        description.setText(game.getDescription());
+        banner.setImage(getImage(game.getImageFile()));
+    }
+
+    private Image getImage(File file) {
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return image;
     }
 }
+

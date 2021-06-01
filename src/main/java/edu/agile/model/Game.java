@@ -12,7 +12,7 @@ import java.io.File;
 public class Game {
     private String name;
     private String description;
-    private File file;
+    private File imageFile;
 
     @Override
     public String toString() {

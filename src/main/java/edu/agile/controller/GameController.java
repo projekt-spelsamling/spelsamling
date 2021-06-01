@@ -68,7 +68,6 @@ public class GameController implements Initializable {
      * @return game object
      */
     private GameCreationDto getGame() {
-        //todo kolla så alla obligatoriska fälten innehåller info
         return GameCreationDto.builder()
                 .name(gameName.getText())
                 .description(gameDescription.getText())
@@ -97,7 +96,6 @@ public class GameController implements Initializable {
     public void chooseImagePath(ActionEvent actionEvent) {
         Stage stage = (Stage) imageChooseButton.getScene().getWindow();
         imageFile = fileChooser.showOpenDialog(stage);
-        //todo handle when no file is choses (exit window)
         imagePath.setText(imageFile.getAbsolutePath());
     }
 
