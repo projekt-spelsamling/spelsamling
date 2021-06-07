@@ -14,6 +14,7 @@ public class Game {
     private String name;
     private String description;
     private Image image;
+    private Image banner;
     private File game;
 
     @Override

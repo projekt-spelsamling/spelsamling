@@ -12,12 +12,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -28,7 +32,7 @@ public class MainController implements Initializable {
     @FXML
     public Button addGame;
     @FXML
-    public ListView<Game> gameComboBox;
+    public VBox gameView;
 
     public ObservableList<Game> gameList;
     private final GameService gameService;
@@ -48,8 +52,8 @@ public class MainController implements Initializable {
      */
     public void setInfoScene(ActionEvent actionEvent) throws IOException {
         //Get selected game
-        Game selectedGame = gameComboBox.getSelectionModel().getSelectedItem();
-        setInfoScene(selectedGame);
+        //Game selectedGame = gameComboBox.getSelectionModel().getSelectedItem();
+        //setInfoScene(selectedGame);
     }
 
     public void playGameAction(ActionEvent actionEvent) {
@@ -81,7 +85,7 @@ public class MainController implements Initializable {
      */
     private void setInfoScene(Game selectedGame) throws IOException {
         //Get stage
-        Stage stage = (Stage) gameComboBox.getScene().getWindow();
+        Stage stage = (Stage) gameView.getScene().getWindow();
         stage.close();
 
         //Set new controller and pass game
@@ -103,13 +107,48 @@ public class MainController implements Initializable {
      * Otherwise, the first item in the list is selected
      */
     private void populateGameList() {
-        gameList = FXCollections.observableArrayList(gameService.findAll());
+        gameList = FXCollections.observableList(gameService.findAll());
+
         if (gameList.isEmpty()) {
             disableGameButtons();
         } else {
-            gameComboBox.setItems(gameList);
-            gameComboBox.getSelectionModel().select(0);
+            drawList(gameList);
         }
+    }
+
+    private void drawList(ObservableList<Game> gameList) {
+        for (Game game : gameList) {
+            Pane row = new Pane();
+
+            Label name = makeLabel(game.getName());
+            ImageView imageView = makeImage(game.getBanner());
+
+            row.getChildren().add();
+            row.getChildren().add();
+            gameView.getChildren().add(row);
+        }
+    }
+
+    /**
+     *
+     *
+     * @param gameName
+     * @return
+     */
+    private Label makeLabel(String gameName) {
+        Label label = new Label(gameName);
+        return label;
+    }
+
+    /**
+     *
+     *
+     * @param banner
+     * @return
+     */
+    private ImageView makeImage(Image banner) {
+        ImageView imageView = new ImageView(banner);
+        return imageView;
     }
 
     /**

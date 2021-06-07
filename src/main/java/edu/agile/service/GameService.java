@@ -35,8 +35,9 @@ public class GameService {
      * @param game game to add
      */
     public void addGame(GameCreationDto game) {
-        String image = imageService.saveImageFile(game.getFile(), game.getName(), "banner");
-        gameRepository.addGame(toDocument(game, image));
+        String image = imageService.saveImageFile(game.getImage(), game.getName(), "big");
+        String banner = imageService.saveImageFile(game.getBanner(), game.getName(), "banner");
+        gameRepository.addGame(toDocument(game, image, banner));
     }
 
     /**
@@ -62,15 +63,17 @@ public class GameService {
                 .name(document.getString("name"))
                 .description(document.getString("description"))
                 .image(imageService.toImage(new File(document.getString("image"))))
+                .banner(imageService.toImage(new File(document.getString("banner"))))
                 .game(new File(document.getString("game")))
                 .build();
     }
 
-    private Document toDocument(GameCreationDto game, String image) {
+    private Document toDocument(GameCreationDto game, String image, String banner) {
         Document document = new Document();
         document.append("name", game.getName());
         document.append("description", game.getDescription());
         document.append("image", image);
+        document.append("banner", banner);
         document.append("game", game.getGame().getAbsolutePath());
         return document;
     }

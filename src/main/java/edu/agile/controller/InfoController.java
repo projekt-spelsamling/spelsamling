@@ -28,7 +28,6 @@ public class InfoController implements Initializable {
         this.game = game;
     }
 
-
     @FXML
     TextField name;
 
