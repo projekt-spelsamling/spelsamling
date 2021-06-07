@@ -3,6 +3,7 @@ package edu.agile.service;
 import edu.agile.model.Game;
 import edu.agile.model.GameCreationDto;
 import edu.agile.repository.GameRepository;
+import javafx.scene.image.Image;
 import org.bson.Document;
 
 import java.io.File;
@@ -13,8 +14,8 @@ import java.util.stream.Collectors;
 public class GameService {
     private static GameService instance;
 
-    private GameRepository gameRepository;
-    private ImageService imageService;
+    private final GameRepository gameRepository;
+    private final ImageService imageService;
 
     private GameService() {
         this.gameRepository = GameRepository.getInstance();
@@ -46,7 +47,7 @@ public class GameService {
     public List<Game> findAll() {
         return gameRepository.findAll()
                 .stream()
-                .map(GameService::toEntity)
+                .map(this::toEntity)
                 .collect(Collectors.toList());
     }
 
@@ -56,16 +57,16 @@ public class GameService {
      * @param document
      * @return
      */
-    private static Game toEntity(Document document) {
+    private Game toEntity(Document document) {
         return Game.builder()
                 .name(document.getString("name"))
                 .description(document.getString("description"))
-                .imageFile(new File(document.getString("image")))
+                .image(imageService.toImage(new File(document.getString("image"))))
                 .game(new File(document.getString("game")))
                 .build();
     }
 
-    private static Document toDocument(GameCreationDto game, String image) {
+    private Document toDocument(GameCreationDto game, String image) {
         Document document = new Document();
         document.append("name", game.getName());
         document.append("description", game.getDescription());

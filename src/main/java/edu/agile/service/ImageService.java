@@ -1,8 +1,11 @@
 package edu.agile.service;
 
+import javafx.scene.image.Image;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -71,6 +74,16 @@ public class ImageService {
             e.printStackTrace();
         }
         return destination.toString();
+    }
+
+    public Image toImage(File file) {
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return image;
     }
 
     /**

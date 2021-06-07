@@ -39,11 +39,6 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>3.12.8</version>
         </dependency>
-        <dependency>
-            <groupId>org.lasersonlab</groupId>
-            <artifactId>jblosc</artifactId>
-            <version>1.0.1</version>
-        </dependency>
 
 
         <!-- Testing -->

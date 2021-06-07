@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class MainController implements Initializable {
     @FXML
     public Button addGame;
     @FXML
-    public ComboBox<Game> gameComboBox;
+    public ListView<Game> gameComboBox;
 
     public ObservableList<Game> gameList;
     private final GameService gameService;

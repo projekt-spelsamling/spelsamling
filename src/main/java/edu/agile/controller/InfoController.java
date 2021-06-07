@@ -49,17 +49,7 @@ public class InfoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         name.setText(game.getName());
         description.setText(game.getDescription());
-        banner.setImage(getImage(game.getImageFile()));
-    }
-
-    private Image getImage(File file) {
-        Image image = null;
-        try {
-            image = new Image(new FileInputStream(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return image;
+        banner.setImage(game.getImage());
     }
 
     @FXML

@@ -61,6 +61,7 @@ public class GameController implements Initializable {
     public void addGame(ActionEvent actionEvent) {
         gameService.addGame(getGame());
         setMainScene();
+
     }
 
     /**
