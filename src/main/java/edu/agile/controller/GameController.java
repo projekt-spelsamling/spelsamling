@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
@@ -32,8 +33,17 @@ public class GameController implements Initializable {
     public Button addGame;
     @FXML
     public Button abort;
+    @FXML
+    public MenuItem menuButton;
+    @FXML
+    public MenuItem exitButton;
+    @FXML
+    public TextField gamePath;
+    @FXML
+    public Button gameChooseButton;
 
     private File imageFile;
+    private File gameFile;
 
     public FileChooser fileChooser = new FileChooser();
 
@@ -72,6 +82,7 @@ public class GameController implements Initializable {
                 .name(gameName.getText())
                 .description(gameDescription.getText())
                 .file(imageFile)
+                .game(gameFile)
                 .build();
     }
 
@@ -97,6 +108,43 @@ public class GameController implements Initializable {
         Stage stage = (Stage) imageChooseButton.getScene().getWindow();
         imageFile = fileChooser.showOpenDialog(stage);
         imagePath.setText(imageFile.getAbsolutePath());
+    }
+
+    public void chooseGamePath(ActionEvent actionEvent) {
+        Stage stage = (Stage) gameChooseButton.getScene().getWindow();
+        gameFile = fileChooser.showOpenDialog(stage);
+        gamePath.setText(gameFile.getAbsolutePath());
+    }
+
+    @FXML
+    public void menuButtonAction(ActionEvent event) {
+        if (event.getSource() == menuButton) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                Stage stage2 = (Stage) gameName.getScene().getWindow();
+                stage2.close();
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    @FXML
+    public void exitButtonAction(ActionEvent event) {
+        if (event.getSource() == exitButton) {
+            try {
+                Stage stage = (Stage) gameName.getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

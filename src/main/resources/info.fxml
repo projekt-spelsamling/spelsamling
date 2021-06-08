@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-
 <!-- Does not have fx:controller field because it needs to be manually set -->
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
             xmlns:fx="http://javafx.com/fxml/1">
     <children>
@@ -18,5 +15,17 @@
         <TextField fx:id="name" editable="false" layoutX="175.0" layoutY="206.0"/>
         <ImageView fx:id="banner" fitHeight="149.0" fitWidth="236.0" layoutX="175.0" layoutY="29.0" pickOnBounds="true"
                    preserveRatio="true"/>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="Menu">
+                    <items>
+                        <MenuItem fx:id="menuButton" mnemonicParsing="false" onAction="#menuButtonAction"
+                                  text="Main Menu"/>
+                        <SeparatorMenuItem mnemonicParsing="false"/>
+                        <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" text="Exit"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
     </children>
 </AnchorPane>
