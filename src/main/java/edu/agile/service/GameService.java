@@ -61,6 +61,7 @@ public class GameService {
                 .name(document.getString("name"))
                 .description(document.getString("description"))
                 .imageFile(new File(document.getString("image")))
+                .game(new File(document.getString("game")))
                 .build();
     }
 
@@ -69,6 +70,7 @@ public class GameService {
         document.append("name", game.getName());
         document.append("description", game.getDescription());
         document.append("image", image);
+        document.append("game", game.getGame().getAbsolutePath());
         return document;
     }
 }

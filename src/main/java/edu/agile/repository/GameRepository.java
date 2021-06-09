@@ -2,7 +2,6 @@ package edu.agile.repository;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import edu.agile.model.Game;
 import edu.agile.service.DatabaseService;
 import org.bson.Document;
 

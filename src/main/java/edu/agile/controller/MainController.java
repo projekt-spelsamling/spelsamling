@@ -1,5 +1,6 @@
 package edu.agile.controller;
 
+import edu.agile.Utils.Program;
 import edu.agile.model.Game;
 import edu.agile.service.GameService;
 import javafx.collections.FXCollections;
@@ -48,6 +49,11 @@ public class MainController implements Initializable {
         //Get selected game
         Game selectedGame = gameComboBox.getSelectionModel().getSelectedItem();
         setInfoScene(selectedGame);
+    }
+
+    public void playGameAction(ActionEvent actionEvent) {
+        Game game = gameComboBox.getSelectionModel().getSelectedItem();
+        Program.run(game);
     }
 
     /**

@@ -13,6 +13,7 @@ public class Game {
     private String name;
     private String description;
     private File imageFile;
+    private File game;
 
     @Override
     public String toString() {

@@ -13,4 +13,5 @@ public class GameCreationDto {
     private String name;
     private String description;
     private File file;
+    private File game;
 }
