@@ -3,7 +3,6 @@ package edu.agile.service;
 import edu.agile.model.Game;
 import edu.agile.model.GameCreationDto;
 import edu.agile.repository.GameRepository;
-import javafx.scene.image.Image;
 import org.bson.Document;
 
 import java.io.File;

@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -68,7 +67,6 @@ public class InfoController implements Initializable {
             }
         }
     }
-
 
     @FXML
     public void exitButtonAction(ActionEvent event) {
