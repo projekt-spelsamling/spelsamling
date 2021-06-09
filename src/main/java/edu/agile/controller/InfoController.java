@@ -33,6 +33,12 @@ public class InfoController implements Initializable {
     TextField name;
 
     @FXML
+    TextField developer;
+
+    @FXML
+    TextField releaseDate;
+
+    @FXML
     TextArea description;
 
     @FXML
@@ -48,7 +54,9 @@ public class InfoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         name.setText(game.getName());
+        developer.setText(game.getDeveloper());
         description.setText(game.getDescription());
+        releaseDate.setText(game.getReleaseDate());
         banner.setImage(getImage(game.getImageFile()));
     }
 

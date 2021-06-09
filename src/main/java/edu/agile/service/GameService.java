@@ -59,7 +59,9 @@ public class GameService {
     private static Game toEntity(Document document) {
         return Game.builder()
                 .name(document.getString("name"))
+                .developer(document.getString("developer"))
                 .description(document.getString("description"))
+                .releaseDate(document.getString("release"))
                 .imageFile(new File(document.getString("image")))
                 .game(new File(document.getString("game")))
                 .build();
@@ -68,7 +70,9 @@ public class GameService {
     private static Document toDocument(GameCreationDto game, String image) {
         Document document = new Document();
         document.append("name", game.getName());
+        document.append("developer", game.getDeveloper());
         document.append("description", game.getDescription());
+        document.append("release", game.getReleaseDate());
         document.append("image", image);
         document.append("game", game.getGame().getAbsolutePath());
         return document;

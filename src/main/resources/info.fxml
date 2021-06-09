@@ -8,12 +8,12 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
             xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label layoutX="86.0" layoutY="210.0" text="Namn"/>
-        <Label layoutX="86.0" layoutY="246.0" text="Beskrivning"/>
-        <TextArea fx:id="description" editable="false" layoutX="175.0" layoutY="246.0" prefHeight="109.0"
-                  prefWidth="267.0"/>
-        <TextField fx:id="name" editable="false" layoutX="175.0" layoutY="206.0"/>
-        <ImageView fx:id="banner" fitHeight="149.0" fitWidth="236.0" layoutX="175.0" layoutY="29.0" pickOnBounds="true"
+        <Label layoutX="86.0" layoutY="171.0" text="Namn"/>
+        <Label layoutX="86.0" layoutY="234.0" text="Beskrivning"/>
+        <TextArea fx:id="description" editable="false" layoutX="175.0" layoutY="234.0" prefHeight="87.0"
+                  prefWidth="250.0"/>
+        <TextField fx:id="name" editable="false" layoutX="175.0" layoutY="167.0"/>
+        <ImageView fx:id="banner" fitHeight="149.0" fitWidth="236.0" layoutX="175.0" pickOnBounds="true"
                    preserveRatio="true"/>
         <MenuBar>
             <menus>
@@ -27,5 +27,9 @@
                 </Menu>
             </menus>
         </MenuBar>
+        <TextField fx:id="developer" editable="false" layoutX="175.0" layoutY="200.0"/>
+        <Label layoutX="86.0" layoutY="204.0" text="Speltillverkare"/>
+        <TextField fx:id="releaseDate" editable="false" layoutX="175.0" layoutY="329.0"/>
+        <Label layoutX="89.0" layoutY="333.0" text="Releasedatum"/>
     </children>
 </AnchorPane>
