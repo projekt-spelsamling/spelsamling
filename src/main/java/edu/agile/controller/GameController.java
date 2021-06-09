@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
@@ -29,6 +30,10 @@ public class GameController implements Initializable {
     public TextField imagePath;
     @FXML
     public Button imageChooseButton;
+    @FXML
+    public TextField bannerPath;
+    @FXML
+    public Button bannerChooseButton;
     @FXML
     public Button addGame;
     @FXML
@@ -44,6 +49,8 @@ public class GameController implements Initializable {
 
     private File imageFile;
     private File gameFile;
+
+    private File bannerFile;
 
     public FileChooser fileChooser = new FileChooser();
 
@@ -61,6 +68,7 @@ public class GameController implements Initializable {
     public void addGame(ActionEvent actionEvent) {
         gameService.addGame(getGame());
         setMainScene();
+
     }
 
     /**
@@ -81,8 +89,9 @@ public class GameController implements Initializable {
         return GameCreationDto.builder()
                 .name(gameName.getText())
                 .description(gameDescription.getText())
-                .file(imageFile)
+                .image(imageFile)
                 .game(gameFile)
+                .banner(bannerFile)
                 .build();
     }
 
@@ -95,7 +104,7 @@ public class GameController implements Initializable {
 
             stage.close();
 
-            Parent root = FXMLLoader.load(getClass().getResource("/main.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/main.fxml")));
             stage.setTitle("Spelsamling");
             stage.setScene(new Scene(root));
             stage.show();
@@ -108,6 +117,12 @@ public class GameController implements Initializable {
         Stage stage = (Stage) imageChooseButton.getScene().getWindow();
         imageFile = fileChooser.showOpenDialog(stage);
         imagePath.setText(imageFile.getAbsolutePath());
+    }
+
+    public void chooseBannerPath(ActionEvent actionEvent) {
+        Stage stage = (Stage) imageChooseButton.getScene().getWindow();
+        bannerFile = fileChooser.showOpenDialog(stage);
+        bannerPath.setText(imageFile.getAbsolutePath());
     }
 
     public void chooseGamePath(ActionEvent actionEvent) {

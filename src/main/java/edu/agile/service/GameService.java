@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class GameService {
     private static GameService instance;
 
-    private GameRepository gameRepository;
-    private ImageService imageService;
+    private final GameRepository gameRepository;
+    private final ImageService imageService;
 
     private GameService() {
         this.gameRepository = GameRepository.getInstance();
@@ -34,8 +34,9 @@ public class GameService {
      * @param game game to add
      */
     public void addGame(GameCreationDto game) {
-        String image = imageService.saveImageFile(game.getFile(), game.getName(), "banner");
-        gameRepository.addGame(toDocument(game, image));
+        String image = imageService.saveImageFile(game.getImage(), game.getName(), "big");
+        String banner = imageService.saveImageFile(game.getBanner(), game.getName(), "banner");
+        gameRepository.addGame(toDocument(game, image, banner));
     }
 
     /**
@@ -46,7 +47,7 @@ public class GameService {
     public List<Game> findAll() {
         return gameRepository.findAll()
                 .stream()
-                .map(GameService::toEntity)
+                .map(this::toEntity)
                 .collect(Collectors.toList());
     }
 
@@ -56,20 +57,22 @@ public class GameService {
      * @param document
      * @return
      */
-    private static Game toEntity(Document document) {
+    private Game toEntity(Document document) {
         return Game.builder()
                 .name(document.getString("name"))
                 .description(document.getString("description"))
-                .imageFile(new File(document.getString("image")))
+                .image(imageService.toImage(new File(document.getString("image"))))
+                .banner(imageService.toImage(new File(document.getString("banner"))))
                 .game(new File(document.getString("game")))
                 .build();
     }
 
-    private static Document toDocument(GameCreationDto game, String image) {
+    private Document toDocument(GameCreationDto game, String image, String banner) {
         Document document = new Document();
         document.append("name", game.getName());
         document.append("description", game.getDescription());
         document.append("image", image);
+        document.append("banner", banner);
         document.append("game", game.getGame().getAbsolutePath());
         return document;
     }

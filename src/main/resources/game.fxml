@@ -29,6 +29,10 @@
                 </Menu>
             </menus>
         </MenuBar>
+        <Label layoutX="85.0" layoutY="302.0" text="Banner"/>
+        <TextField fx:id="bannerPath" editable="false" layoutX="174.0" layoutY="298.0" promptText="Välj en fil"/>
+        <Button fx:id="bannerChooseButton" layoutX="357.0" layoutY="298.0" mnemonicParsing="false"
+                onAction="#chooseBannerPath" text="Bläddra"/>
         <TextField fx:id="gamePath" editable="false" layoutX="175.0" layoutY="267.0" promptText="Välj en fil"/>
         <Button fx:id="gameChooseButton" layoutX="342.0" layoutY="267.0" mnemonicParsing="false"
                 onAction="#chooseGamePath" text="Bläddra"/>

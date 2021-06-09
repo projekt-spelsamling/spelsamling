@@ -1,5 +1,6 @@
 package edu.agile.model;
 
+import javafx.scene.image.Image;
 import lombok.*;
 
 import java.io.File;
@@ -12,7 +13,8 @@ import java.io.File;
 public class Game {
     private String name;
     private String description;
-    private File imageFile;
+    private Image image;
+    private Image banner;
     private File game;
 
     @Override

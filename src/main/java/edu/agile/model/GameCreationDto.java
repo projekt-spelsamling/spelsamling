@@ -12,6 +12,7 @@ import java.io.File;
 public class GameCreationDto {
     private String name;
     private String description;
-    private File file;
+    private File image;
+    private File banner;
     private File game;
 }

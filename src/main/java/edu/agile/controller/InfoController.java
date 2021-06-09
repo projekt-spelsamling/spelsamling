@@ -10,13 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,7 +23,6 @@ public class InfoController implements Initializable {
     public InfoController(Game game) {
         this.game = game;
     }
-
 
     @FXML
     TextField name;
@@ -49,17 +44,7 @@ public class InfoController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         name.setText(game.getName());
         description.setText(game.getDescription());
-        banner.setImage(getImage(game.getImageFile()));
-    }
-
-    private Image getImage(File file) {
-        Image image = null;
-        try {
-            image = new Image(new FileInputStream(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return image;
+        banner.setImage(game.getImage());
     }
 
     @FXML
@@ -79,7 +64,6 @@ public class InfoController implements Initializable {
             }
         }
     }
-
 
     @FXML
     public void exitButtonAction(ActionEvent event) {
