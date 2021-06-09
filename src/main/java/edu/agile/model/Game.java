@@ -14,6 +14,8 @@ public class Game {
     private String description;
     private File imageFile;
     private File game;
+    private String developer;
+    private String releaseDate;
 
     @Override
     public String toString() {

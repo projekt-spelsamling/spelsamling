@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -41,6 +38,11 @@ public class GameController implements Initializable {
     public TextField gamePath;
     @FXML
     public Button gameChooseButton;
+    @FXML
+    public DatePicker chooseReleaseDate;
+    @FXML
+    public TextField gameDeveloperName;
+
 
     private File imageFile;
     private File gameFile;
@@ -80,7 +82,9 @@ public class GameController implements Initializable {
     private GameCreationDto getGame() {
         return GameCreationDto.builder()
                 .name(gameName.getText())
+                .developer(gameDeveloperName.getText())
                 .description(gameDescription.getText())
+                .releaseDate(chooseReleaseDate.getValue().toString())
                 .file(imageFile)
                 .game(gameFile)
                 .build();

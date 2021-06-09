@@ -5,17 +5,17 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="edu.agile.controller.GameController">
     <children>
-        <Label layoutX="90.0" layoutY="59.0" text="Namn"/>
-        <TextField fx:id="gameName" layoutX="175.0" layoutY="55.0" promptText="Spelets namn"/>
-        <Label layoutX="86.0" layoutY="90.0" text="Beskrivning"/>
-        <TextArea fx:id="gameDescription" layoutX="175.0" layoutY="90.0" prefHeight="130.0" prefWidth="267.0"
+        <Label layoutX="84.0" layoutY="38.0" text="Namn"/>
+        <TextField fx:id="gameName" layoutX="175.0" layoutY="34.0" promptText="Spelets namn"/>
+        <Label layoutX="83.0" layoutY="93.0" text="Beskrivning"/>
+        <TextArea fx:id="gameDescription" layoutX="175.0" layoutY="101.0" prefHeight="92.0" prefWidth="240.0"
                   promptText="Beskrivning av spelet"/>
         <Button fx:id="addGame" layoutX="250.0" layoutY="337.0" mnemonicParsing="false" onAction="#addGame"
                 text="Lägg till"/>
         <Button fx:id="abort" layoutX="175.0" layoutY="337.0" mnemonicParsing="false" onAction="#abort" text="Avbryt"/>
-        <Label layoutX="90.0" layoutY="235.0" text="Bild"/>
-        <TextField fx:id="imagePath" editable="false" layoutX="176.0" layoutY="231.0" promptText="Välj en fil"/>
-        <Button fx:id="imageChooseButton" layoutX="342.0" layoutY="231.0" mnemonicParsing="false"
+        <Label layoutX="91.0" layoutY="248.0" text="Bild"/>
+        <TextField fx:id="imagePath" editable="false" layoutX="176.0" layoutY="244.0" promptText="Välj en fil"/>
+        <Button fx:id="imageChooseButton" layoutX="342.0" layoutY="244.0" mnemonicParsing="false"
                 onAction="#chooseImagePath" text="Bläddra"/>
         <MenuBar>
             <menus>
@@ -29,9 +29,14 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <TextField fx:id="gamePath" editable="false" layoutX="175.0" layoutY="267.0" promptText="Välj en fil"/>
-        <Button fx:id="gameChooseButton" layoutX="342.0" layoutY="267.0" mnemonicParsing="false"
+        <TextField fx:id="gamePath" editable="false" layoutX="175.0" layoutY="280.0" promptText="Välj en fil"/>
+        <Button fx:id="gameChooseButton" layoutX="342.0" layoutY="280.0" mnemonicParsing="false"
                 onAction="#chooseGamePath" text="Bläddra"/>
-        <Label layoutX="90.0" layoutY="271.0" text="Spel"/>
+        <Label layoutX="89.0" layoutY="284.0" text="Spel"/>
+        <TextField fx:id="gameDeveloperName" layoutX="176.0" layoutY="67.0" promptText="Speltillverkarens namn"/>
+        <Label layoutX="83.0" layoutY="71.0" text="Speltillverkare"/>
+        <DatePicker fx:id="chooseReleaseDate" layoutX="175.0" layoutY="208.0" prefHeight="25.0" prefWidth="149.0"
+                    promptText="Datum"/>
+        <Label layoutX="72.0" layoutY="212.0" text="Release datum"/>
     </children>
 </AnchorPane>
